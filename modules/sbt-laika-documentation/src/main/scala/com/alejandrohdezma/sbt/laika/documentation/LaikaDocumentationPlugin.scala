@@ -52,7 +52,7 @@ import pink.cozydev.protosearch.ui.SearchUI
   *
   * The Markdown pages in `documentation/docs` go through mdoc first, then Laika renders them with the Helium theme, a
   * landing page, client-side search (protosearch) and the static files in `documentation/static`. `laikaSite` writes
-  * the site to `docs` at the root of the build, so GitHub Pages can serve it from the `main` branch.
+  * the site to `public` at the root of the build, where sbt-ci's release workflow deploys it to GitHub Pages.
   *
   * Title, description and repository links come from `name`, `description`, `scmInfo` and `homepage`.
   */
@@ -107,7 +107,7 @@ object LaikaDocumentationPlugin extends AutoPlugin {
     }
 
     val documentationOutputDirectory = settingKey[File] {
-      "Directory the site is written to (default: `docs` at the root of the build)"
+      "Directory the site is written to (default: `public` at the root of the build)"
     }
 
     val documentationHelium = settingKey[Helium => Helium] {
@@ -130,7 +130,7 @@ object LaikaDocumentationPlugin extends AutoPlugin {
     documentationStartPage        := "getting-started.md",
     documentationSourceDirectory  := baseDirectory.value / "docs",
     documentationStaticDirectory  := baseDirectory.value / "static",
-    documentationOutputDirectory  := (ThisBuild / baseDirectory).value / "docs",
+    documentationOutputDirectory  := (ThisBuild / baseDirectory).value / "public",
     documentationLogo             := Some("img/logo.svg").filter(documentationStaticDirectory.value./(_).exists),
     documentationFavicon          := Some("img/favicon.ico").filter(documentationStaticDirectory.value./(_).exists),
     documentationHelium           := identity,

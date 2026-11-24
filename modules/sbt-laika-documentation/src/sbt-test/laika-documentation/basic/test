@@ -1,12 +1,12 @@
 > documentation/laikaSite
 $ absent README.md
-$ exists docs/index.html
-$ exists docs/getting-started.html
-$ exists docs/guides/configuration.html
-$ exists docs/img/fast.svg
-$ exists docs/search/searchIndex.idx
-$ exists docs/laika-documentation/documentation.css
-$ exists docs/laika-documentation/documentation.js
+$ exists public/index.html
+$ exists public/getting-started.html
+$ exists public/guides/configuration.html
+$ exists public/img/fast.svg
+$ exists public/search/searchIndex.idx
+$ exists public/laika-documentation/documentation.css
+$ exists public/laika-documentation/documentation.js
 > checkSite
 > documentation/mdoc
 > checkReadme
