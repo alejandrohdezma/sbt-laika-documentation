@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="${?laika.site.metadata.language}">
+
+  @:include(helium.site.templates.head)
+
+  <body>
+
+    @:include(helium.site.templates.topNav)
+
+    @:include(helium.site.templates.mainNav)
+
+    <div id="container">
+
+      @:include(helium.site.templates.pageNav)
+
+      <main class="content">
+
+        @:breadcrumb
+
+        ${cursor.currentDocument.content}
+
+        <nav class="pagination-nav">
+          <a class="pagination-nav__link previous" href="${?cursor.flattenedSiblings.previousDocument.path}">
+            <span class="pagination-nav__sublabel">Previous</span>
+            <span class="pagination-nav__label">« ${?cursor.flattenedSiblings.previousDocument.title}</span>
+          </a>
+          <a class="pagination-nav__link next" href="${?cursor.flattenedSiblings.nextDocument.path}">
+            <span class="pagination-nav__sublabel">Next</span>
+            <span class="pagination-nav__label">${?cursor.flattenedSiblings.nextDocument.title} »</span>
+          </a>
+        </nav>
+
+      </main>
+
+      @:for(documentation.footer)
+      <footer class="footer">
+        @:for(documentation.logo)<a class="footer__logo" href="${?documentation.footer.link}" target="_blank" rel="noopener noreferrer"><img src="@:target(documentation.logo)" alt="${documentation.title} logo"></a>@:@
+        @:for(documentation.footer.text)<div class="footer__copyright">${_}</div>@:@
+      </footer>
+      @:@
+
+    </div>
+
+  </body>
+
+</html>
