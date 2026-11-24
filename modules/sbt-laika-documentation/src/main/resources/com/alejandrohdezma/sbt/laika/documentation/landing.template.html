@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="${?laika.site.metadata.language}">
+
+  @:include(helium.site.templates.head)
+
+  <body class="landing">
+
+    @:include(helium.site.templates.topNav)
+
+    <section class="hero">
+      <h1>${documentation.title}</h1>
+      @:for(documentation.description)<p class="hero__subtitle">${_}</p>@:@
+      <a class="hero__button" href="@:target(documentation.startPage)">Get Started</a>
+    </section>
+
+    @:if(documentation.features)
+    <section class="features">
+      @:for(documentation.features)
+      <div class="feature">
+        @:for(_.image)<img src="@:target(_.image)" alt="">@:@
+        <h3>${_.title}</h3>
+        <p>${_.description}</p>
+      </div>
+      @:@
+    </section>
+    @:@
+
+    @:for(documentation.footer)
+    <footer class="footer">
+      @:for(documentation.logo)<a class="footer__logo" href="${?documentation.footer.link}" target="_blank" rel="noopener noreferrer"><img src="@:target(documentation.logo)" alt="${documentation.title} logo"></a>@:@
+      @:for(documentation.footer.text)<div class="footer__copyright">${_}</div>@:@
+    </footer>
+    @:@
+
+  </body>
+
+</html>
