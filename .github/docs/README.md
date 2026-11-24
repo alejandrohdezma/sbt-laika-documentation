@@ -45,7 +45,9 @@ documentation/
         └── favicon.ico      # optional
 ```
 
-Run `documentation/laikaSite` to build the site into `docs/` at the root of the build. To publish it with GitHub Pages, commit `docs/` and set the Pages source to the `main` branch and the `/docs` folder.
+Run `documentation/laikaSite` to build the site into `public/` at the root of the build. Don't commit it: add `public/` to `.gitignore`.
+
+To publish the site with GitHub Pages, add `documentation/laikaSite` to your `ci-docs` alias and set the repository's Pages source to "GitHub Actions". The release workflow of [sbt-ci](https://github.com/alejandrohdezma/sbt-ci) (5.1.0 or later) deploys `public/` when it exists.
 
 The title comes from the repository name, and the tagline and repository links from `description`, `scmInfo` and `homepage`. If you use [sbt-github](https://github.com/alejandrohdezma/sbt-github), run `github` before `documentation/laikaSite` so those settings are filled from GitHub:
 
@@ -129,7 +131,7 @@ The footer shows the logo, if there is one, and the text. `link` is optional: wh
 | `documentationFavicon` | Favicon, relative to the static directory | `img/favicon.ico`, if it exists |
 | `documentationSourceDirectory` | Directory with the Markdown pages | `docs` inside the project |
 | `documentationStaticDirectory` | Directory with images and other static files | `static` inside the project |
-| `documentationOutputDirectory` | Directory the site is written to | `docs` at the root of the build |
+| `documentationOutputDirectory` | Directory the site is written to | `public` at the root of the build |
 | `documentationHelium` | Changes to Laika's Helium theme, applied after the plugin's own configuration | no changes |
 
 ## Customizing the theme

@@ -13,7 +13,7 @@ lazy val documentation = project
 val checkSite = taskKey[Unit]("Checks the generated site")
 
 checkSite := {
-  val site = (ThisBuild / baseDirectory).value / "docs"
+  val site = (ThisBuild / baseDirectory).value / "public"
 
   def contains(file: String, expected: String*): Unit = {
     val content = IO.read(site / file)
